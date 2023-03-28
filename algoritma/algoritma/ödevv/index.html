@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr 3fr;
+    }
+    section:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    ul{
+        display: flex;
+    }
+    ul > li{
+        list-style: none;
+        margin: 10px;
+    }
+    section:nth-child(2){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    section:nth-child(2) > div{
+        margin: 40px;
+        padding: 25px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    img{
+        height: 200px;
+        width: 150px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+button{
+    margin: 10px;
+
+}
+p{
+    margin: 20px;
+}
+.kart {
+    flex: 0 0 200px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  .kart.cevap {
+    background-color: green;
+  }
+  
+  .kart.yanlis {
+    background-color: red;
+  }
+
+</style>
+<body>
+    <section>
+        <h1>FUTBOLCU KARTLARI</h1>
+        <div id="kart-sorulari">
+            <p id="soru"></p>
+        </div>
+    </section>
+    <section>
+       <div class="kart">
+     <img src="resimler/messi.jpg" alt="messi">
+       </div>
+       <div class="kart">
+     <img src="resimler/ronaldo.jpg" alt="ronaldo">
+       </div>
+       <div class="kart">
+     <img src="resimler/neymar.jpg" alt="neymar">
+       </div>
+    </section>
+</body>
+<script>
+      const futbolcular={
+        messi:{
+            sorular: ["Gol sayısı kaç?","Kariyer maç sayısı?","Kırmızı kart sayısı?"],
+      cevaplar:[785,900,5] 
+        },
+        ronaldo:{
+            sorular: ["Gol sayısı kaç?","Kariyer maç sayısı?","Kırmızı kart sayısı?"],
+      cevaplar:[850,1000,3] 
+
+        },
+        neymar:{
+            sorular: ["Gol sayısı kaç?","Kariyer maç sayısı?","Kırmızı kart sayısı?"],
+      cevaplar:[250,500,15]
+        }
+    };
+    let secilen;
+    let alanlar=document.getElementsByTagName("img");
+    [...alanlar].forEach((alan,index)=>{
+        alan.addEventListener("click",()=>{
+            secilen=alan.getAttribute("alt");
+            goster(secilen);
+        });
+    });
+        let alınanlar=[];
+       function goster(secilen){
+           
+            if (alınanlar.includes(secilen)){
+                alert("önceden seçtiğiniz kartı bir daha seçemezsiniz");
+            }
+         else{
+              alert(secilen);
+              }
+     alınanlar.push(secilen);
+       }
+</script>
+</html>
